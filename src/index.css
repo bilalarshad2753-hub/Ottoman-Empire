@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 15 12% 7%;
+    --foreground: 40 45% 88%;
+
+    --card: 15 15% 11%;
+    --card-foreground: 40 45% 88%;
+
+    --popover: 15 15% 11%;
+    --popover-foreground: 40 45% 88%;
+
+    --primary: 0 55% 38%;
+    --primary-foreground: 40 45% 92%;
+
+    --secondary: 43 65% 50%;
+    --secondary-foreground: 15 12% 7%;
+
+    --muted: 15 10% 16%;
+    --muted-foreground: 20 12% 50%;
+
+    --accent: 43 55% 42%;
+    --accent-foreground: 15 12% 7%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 43 25% 22%;
+    --input: 15 12% 18%;
+    --ring: 0 55% 38%;
+
+    --radius: 0.5rem;
+
+    --ottoman-red: 0 55% 38%;
+    --ottoman-red-light: 0 50% 50%;
+    --ottoman-red-dark: 0 60% 25%;
+    --ottoman-gold: 43 65% 55%;
+    --ottoman-gold-light: 43 70% 70%;
+    --ottoman-gold-dim: 43 40% 35%;
+    --ottoman-night: 15 12% 7%;
+    --ottoman-night-light: 15 15% 12%;
+    --ottoman-crimson: 350 70% 35%;
+    --ottoman-ivory: 40 45% 88%;
+    --ottoman-green: 145 50% 18%;
+    --ottoman-green-light: 145 45% 30%;
+
+    --sidebar-background: 15 15% 11%;
+    --sidebar-foreground: 40 45% 88%;
+    --sidebar-primary: 0 55% 38%;
+    --sidebar-primary-foreground: 40 45% 92%;
+    --sidebar-accent: 43 65% 50%;
+    --sidebar-accent-foreground: 15 12% 7%;
+    --sidebar-border: 43 25% 22%;
+    --sidebar-ring: 0 55% 38%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .ottoman-pattern {
+    background-image:
+      /* Geometric star pattern overlay */
+      radial-gradient(circle at 20% 20%, hsl(var(--ottoman-gold) / 0.04) 0%, transparent 40%),
+      radial-gradient(circle at 80% 80%, hsl(var(--ottoman-red) / 0.06) 0%, transparent 40%),
+      radial-gradient(circle at 50% 50%, hsl(var(--ottoman-gold) / 0.02) 0%, transparent 60%);
+  }
+
+  .ottoman-texture {
+    background-image:
+      repeating-linear-gradient(
+        45deg,
+        hsl(var(--ottoman-gold) / 0.015) 0px,
+        hsl(var(--ottoman-gold) / 0.015) 1px,
+        transparent 1px,
+        transparent 12px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        hsl(var(--ottoman-gold) / 0.015) 0px,
+        hsl(var(--ottoman-gold) / 0.015) 1px,
+        transparent 1px,
+        transparent 12px
+      );
+  }
+
+  .ottoman-parchment {
+    background:
+      linear-gradient(135deg, hsl(var(--ottoman-night-light)) 0%, hsl(var(--ottoman-night)) 50%, hsl(15 14% 9%) 100%);
+    position: relative;
+  }
+
+  .ottoman-parchment::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 40px,
+        hsl(var(--ottoman-gold) / 0.02) 40px,
+        hsl(var(--ottoman-gold) / 0.02) 41px
+      );
+    pointer-events: none;
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 20px hsl(var(--ottoman-gold) / 0.15),
+                0 0 40px hsl(var(--ottoman-gold) / 0.05);
+  }
+
+  .gold-glow-strong {
+    box-shadow: 0 0 15px hsl(var(--ottoman-gold) / 0.3),
+                0 0 30px hsl(var(--ottoman-gold) / 0.1),
+                inset 0 0 15px hsl(var(--ottoman-gold) / 0.05);
+  }
+
+  .red-glow {
+    box-shadow: 0 0 20px hsl(var(--ottoman-red) / 0.2),
+                0 0 40px hsl(var(--ottoman-red) / 0.08);
+  }
+
+  .red-glow-strong {
+    box-shadow: 0 0 15px hsl(var(--ottoman-red) / 0.4),
+                0 0 30px hsl(var(--ottoman-red) / 0.15),
+                inset 0 0 10px hsl(var(--ottoman-red) / 0.08);
+  }
+
+  .gold-border {
+    border: 1px solid hsl(var(--ottoman-gold) / 0.3);
+  }
+
+  .gold-border-strong {
+    border: 2px solid hsl(var(--ottoman-gold) / 0.5);
+  }
+
+  .red-border {
+    border: 1px solid hsl(var(--ottoman-red) / 0.3);
+  }
+
+  .ottoman-card {
+    @apply bg-card rounded-lg p-6;
+    border: 1px solid hsl(var(--ottoman-gold) / 0.2);
+    background: linear-gradient(
+      135deg,
+      hsl(var(--ottoman-night-light)) 0%,
+      hsl(var(--ottoman-night)) 100%
+    );
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ottoman-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--ottoman-red) / 0.6),
+      hsl(var(--ottoman-gold) / 0.8),
+      hsl(var(--ottoman-red) / 0.6),
+      transparent
+    );
+  }
+
+  .ottoman-gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--ottoman-gold-light)) 0%,
+      hsl(var(--ottoman-gold)) 40%,
+      hsl(var(--ottoman-red-light)) 100%
+    );
+  }
+
+  .imperial-gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(
+      135deg,
+      hsl(var(--ottoman-red-light)) 0%,
+      hsl(var(--ottoman-red)) 50%,
+      hsl(var(--ottoman-gold)) 100%
+    );
+  }
+
+  .geometric-border {
+    border-image: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--ottoman-gold) / 0.5),
+      hsl(var(--ottoman-red) / 0.4),
+      hsl(var(--ottoman-gold) / 0.5),
+      transparent
+    ) 1;
+  }
+
+  .sultan-portrait {
+    @apply rounded-full gold-border-strong overflow-hidden;
+    box-shadow:
+      0 0 20px hsl(var(--ottoman-red) / 0.2),
+      0 0 40px hsl(var(--ottoman-gold) / 0.1),
+      0 0 0 4px hsl(var(--ottoman-red) / 0.15);
+  }
+
+  .timeline-dot {
+    @apply w-4 h-4 rounded-full;
+    background: linear-gradient(135deg, hsl(var(--ottoman-red)), hsl(var(--ottoman-gold)));
+    box-shadow: 0 0 10px hsl(var(--ottoman-red) / 0.5);
+  }
+
+  .ornament-divider {
+    @apply w-full h-px my-8;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--ottoman-red) / 0.4),
+      hsl(var(--ottoman-gold)),
+      hsl(var(--ottoman-red) / 0.4),
+      transparent
+    );
+  }
+
+  .imperial-frame {
+    position: relative;
+    border: 1px solid hsl(var(--ottoman-gold) / 0.3);
+    border-radius: 0.5rem;
+  }
+
+  .imperial-frame::before,
+  .imperial-frame::after {
+    content: '◆';
+    position: absolute;
+    color: hsl(var(--ottoman-gold) / 0.5);
+    font-size: 0.6rem;
+  }
+
+  .imperial-frame::before {
+    top: -0.35rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .imperial-frame::after {
+    bottom: -0.35rem;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@layer utilities {
+  .text-gold {
+    color: hsl(var(--ottoman-gold));
+  }
+
+  .text-gold-light {
+    color: hsl(var(--ottoman-gold-light));
+  }
+
+  .text-imperial-red {
+    color: hsl(var(--ottoman-red));
+  }
+
+  .bg-ottoman-red {
+    background-color: hsl(var(--ottoman-red));
+  }
+
+  .bg-ottoman-green {
+    background-color: hsl(var(--ottoman-green));
+  }
+
+  .bg-ottoman-night {
+    background-color: hsl(var(--ottoman-night));
+  }
+
+  .bg-ottoman-night-light {
+    background-color: hsl(var(--ottoman-night-light));
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--ottoman-night));
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, hsl(var(--ottoman-red) / 0.4), hsl(var(--ottoman-gold) / 0.3));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, hsl(var(--ottoman-red) / 0.6), hsl(var(--ottoman-gold) / 0.5));
+}
